@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">QiBei</string>
+    <string name="main_title">齐贝—日历</string>
+    <string name="time_title">齐贝—闹钟</string>
+    <string-array name="features">
+        <item>预约牙医</item>
+        <item>症状记录</item>
+        <item>护理</item>
+    </string-array>
+</resources>
