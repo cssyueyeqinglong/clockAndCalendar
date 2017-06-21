@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
         android:allowBackup="true"
@@ -11,10 +14,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".act.MainActivity"
-            android:screenOrientation="portrait" />
-
         <provider
             android:name=".db.TimeEventProvider"
             android:authorities="com.qibei.timeeventprovider"
@@ -33,6 +32,8 @@
         <activity
             android:name=".act.FeatureAddAct"
             android:screenOrientation="portrait" />
+        <activity android:name=".ListActivity" />
+        <activity android:name=".act.BlueToothAct"></activity>
     </application>
 
 </manifest>

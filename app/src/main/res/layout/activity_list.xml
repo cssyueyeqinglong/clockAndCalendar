@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.qibei.ListActivity.Presenter" />
+
+        <variable
+            name="imgUrl"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.qibei.TestBean" />
+
+        <variable
+            name="isShowImg"
+            type="boolean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.qibei.ListActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{presenter.addItem}"
+                android:text="add" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{presenter.removeItem}"
+                android:text="remove" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:visibility="@{isShowImg?View.VISIBLE:View.GONE}"
+                app:loadurl="@{imgUrl}" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onCheckedChanged="@{(view,checked)->presenter.onCheckChangedData(view,checked)}" />
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={bean.name}" />
+
+        <Button
+            android:onClick="@{presenter.onNextAct}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{@string/app_name+bean.name}" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</layout>

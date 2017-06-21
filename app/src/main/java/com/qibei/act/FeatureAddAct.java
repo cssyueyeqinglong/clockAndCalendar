@@ -1,37 +1,40 @@
 package com.qibei.act;
 
 import android.app.ProgressDialog;
-import android.app.TimePickerDialog;
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.util.SparseArray;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.bigkoo.pickerview.TimePickerView;
 import com.qibei.DateBean;
 import com.qibei.DateQueryUtils;
+import com.qibei.ListActivity;
 import com.qibei.R;
+import com.qibei.TestBean;
+import com.qibei.databinding.ActFeatureAddBinding;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
-import static com.qibei.act.MainActivity.ADD_MONTH;
-import static com.qibei.act.MainActivity.ADD_YEAR;
-import static com.qibei.act.MainActivity.RESQUET_CODE;
+import static com.qibei.act.CalendarFmt.ADD_MONTH;
+import static com.qibei.act.CalendarFmt.ADD_YEAR;
+import static com.qibei.act.CalendarFmt.RESQUET_CODE;
+
 
 /**
  * Created by Administrator on 2017/5/24.
@@ -40,12 +43,11 @@ import static com.qibei.act.MainActivity.RESQUET_CODE;
 public class FeatureAddAct extends AppCompatActivity {
     private int position = 0;
     private String[] titles = new String[]{"预约牙医", "症状记录", "护理"};
-    private Toolbar mToolBar;
     private TextView mTvTitle;
     private TextView mTvFeature;
     private TextView mTv03;
     private TextView mTv04;
-    private TextView mTvContent01, mTvContent02;
+    private EditText mTvContent01, mTvContent02;
     private TextView mTvTime;
     private Button mBtnAdd;
     private int[] colors = new int[]{R.color.ffdf25, R.color.ff6600, R.color.d0e17d};
@@ -56,23 +58,30 @@ public class FeatureAddAct extends AppCompatActivity {
     private ProgressDialog dialog;
     private DateBean mData;
     private Calendar calendar;
+    private SparseArray<String> contents = new SparseArray<>();
+    private TestBean tb = new TestBean("测试", "性格", 0);
+    private ActFeatureAddBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_feature_add);
+        binding = DataBindingUtil.
+                setContentView(this, R.layout.act_feature_add);
         position = getIntent().getIntExtra("position", 0);
         mData = (DateBean) getIntent().getSerializableExtra("itemData");
-        mToolBar = (Toolbar) findViewById(R.id.m_toolbar);
-        mToolBar.setTitle("");
-        setSupportActionBar(mToolBar);
+        binding.setPosition(position);
+        binding.setTitles(titles);
+        binding.setPresenter(new Presenter());
+        binding.setUser(tb);
+        setSupportActionBar(binding.mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        mTvTitle = (TextView) findViewById(R.id.tv_title);
-        if (mData == null) {
-            mTvTitle.setText("添加" + titles[position]);
-        } else {
-            mTvTitle.setText("查看" + titles[position]);
-        }
+
+//        mTvTitle = (TextView) findViewById(R.id.tv_title);
+//        if (mData == null) {
+//            mTvTitle.setText("添加" + titles[position]);
+//        } else {
+//            mTvTitle.setText("查看" + titles[position]);
+//        }
 
         //项目名
         mTvFeature = (TextView) findViewById(R.id.tv_feature);
@@ -106,8 +115,8 @@ public class FeatureAddAct extends AppCompatActivity {
             }
         });
 
-        mTvContent01 = (TextView) findViewById(R.id.tv_03);
-        mTvContent02 = (TextView) findViewById(R.id.tv_04);
+        mTvContent01 = (EditText) findViewById(R.id.tv_03);
+        mTvContent02 = (EditText) findViewById(R.id.tv_04);
         mBtnAdd = (Button) findViewById(R.id.mBtn);
         if (mData != null) {
             mTvTime.setText(mData.timeDesc);
@@ -177,6 +186,35 @@ public class FeatureAddAct extends AppCompatActivity {
                 });
             }
         }).start();
+    }
 
+    private Toast toast;
+
+    public class Presenter {
+
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            tb.setName(s.toString());
+        }
+
+        public void onClickRes(View v) {
+//            if (toast == null) {
+//                toast = Toast.makeText(FeatureAddAct.this, "点击了", Toast.LENGTH_SHORT);
+//                toast.setGravity(Gravity.CENTER, 0, 0);
+//            }
+//            toast.setText("dianji l ");
+//            toast.show();
+//            Toast.makeText(FeatureAddAct.this, "点击了", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(FeatureAddAct.this, ListActivity.class));
+        }
+
+        public void onClickData(TestBean tb) {
+            if (toast == null) {
+                toast = Toast.makeText(FeatureAddAct.this, "点击了", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+            }
+            toast.setText(tb.getName());
+            toast.show();
+        }
     }
 }
