@@ -15,3 +15,4 @@ public class BindAdapter {
         Glide.with(iv.getContext()).load(loadurl).into(iv);
     }
 }
+
