@@ -36,7 +36,6 @@ public class TimeFmt extends Fragment {
     public static TimeFmt newInstance() {
 
         Bundle args = new Bundle();
-
         TimeFmt fragment = new TimeFmt();
         fragment.setArguments(args);
         return fragment;

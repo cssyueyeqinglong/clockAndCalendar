@@ -1,7 +1,6 @@
 package com.qibei;
 
 import android.databinding.BindingAdapter;
-import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;

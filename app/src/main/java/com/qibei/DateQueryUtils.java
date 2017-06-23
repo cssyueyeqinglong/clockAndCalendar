@@ -20,9 +20,9 @@ public class DateQueryUtils {
     private static String[] weeks = new String[]{"一", "二", "三", "四", "五", "六", "七"};
 
     //获取月份天数
-    public static List<DateBean> getDateList(Context context, int year, int month) {
+    public static List<DateBean> getDateList(Context context, int year, int month) throws Exception {
         ContentResolver resolver = context.getContentResolver();
-        List<DateBean> mDatas = new ArrayList<DateBean>();
+        List<DateBean> mDatas = new ArrayList<>();
         //先查询是否存储过当前月份日历
         Cursor cursor = resolver.query(uri, null, "timeId=?", new String[]{year + "" + (month + 1)}, null);
         while (cursor.moveToNext()) {//有数据
@@ -36,7 +36,7 @@ public class DateQueryUtils {
             user.timeDesc = cursor.getString(7);
             user.place = cursor.getString(8);
             user.desc = cursor.getString(9);
-            user.cardTime = cursor.getInt(10);
+            user.cardTime = cursor.getInt(11);
             mDatas.add(user);
             Log.d("bean", "bean:" + user);
         }

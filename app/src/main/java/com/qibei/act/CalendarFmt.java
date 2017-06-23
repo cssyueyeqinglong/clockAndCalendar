@@ -69,7 +69,7 @@ public class CalendarFmt extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mContext = (TimeClockActivity)getContext();
+        mContext = (TimeClockActivity) getContext();
         mTvDate = (TextView) view.findViewById(R.id.tv_date);
         mRcv = (RecyclerView) view.findViewById(R.id.recycler_view);
         mFlBg = view.findViewById(R.id.fl_bg);
@@ -81,8 +81,6 @@ public class CalendarFmt extends Fragment {
         setViewData();
         initData();
         initEvents();
-
-
     }
 
     private void setViewData() {
@@ -112,9 +110,13 @@ public class CalendarFmt extends Fragment {
         if (mDatas != null) {
             mDatas.clear();
         }
-        mDatas = DateQueryUtils.getDateList(mContext, mYear, mMonth);
-        mAdapter.clear();
-        mAdapter.addAll(mDatas);
+        try {
+            mDatas = DateQueryUtils.getDateList(mContext, mYear, mMonth);
+            mAdapter.clear();
+            mAdapter.addAll(mDatas);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

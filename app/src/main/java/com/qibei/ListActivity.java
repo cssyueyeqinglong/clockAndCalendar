@@ -39,7 +39,7 @@ public class ListActivity extends AppCompatActivity {
         mAdapter.addAll(datas);
         binding.rcv.setAdapter(mAdapter);
         binding.setPresenter(new Presenter());
-        binding.setImgUrl("http://img.car-house.cn/Upload/category/thumb/20161219161348395.jpg");
+        binding.setImgUrl("http://img.1985t.com/uploads/attaches/2017/05/119429-Sok7Xxq.jpg");
         binding.setBean(new TestBean("caocao", TEST_TYPE_TWO, 20));
         binding.addOnRebindCallback(new OnRebindCallback() {
             @Override

@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 public class DateBean implements Serializable {
     public int id;
+    public int timeId;
     public int year;
     public int month;
     public int day;
@@ -24,6 +25,6 @@ public class DateBean implements Serializable {
     public String toString() {
         return "year=" + year + ",month=" + month + ",day=" + day +
                 ",week=" + week + ",featureId=" + featureId
-                + ",timeDesc=" + timeDesc + ",place=" + place+",cartTime="+cardTime;
+                + ",timeDesc=" + timeDesc + ",place=" + place + ",cartTime=" + cardTime;
     }
 }

@@ -33,7 +33,7 @@
             android:name=".act.FeatureAddAct"
             android:screenOrientation="portrait" />
         <activity android:name=".ListActivity" />
-        <activity android:name=".act.BlueToothAct"></activity>
+        <activity android:name=".act.BlueToothAct"/>
     </application>
 
 </manifest>
