@@ -34,6 +34,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".ListActivity" />
         <activity android:name=".act.BlueToothAct"/>
+        <activity android:name=".act.BeautifuView"/>
     </application>
 
 </manifest>

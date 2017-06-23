@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.qibei.act.BeautifuView;
 import com.qibei.act.BlueToothAct;
 import com.qibei.databinding.ActivityListBinding;
 
@@ -66,6 +67,10 @@ public class ListActivity extends AppCompatActivity {
 
         public void onNextAct(View view) {
             startActivity(new Intent(ListActivity.this, BlueToothAct.class));
+        }
+
+        public void onClickView(View view){
+            startActivity(new Intent(ListActivity.this, BeautifuView.class));
         }
     }
 }

@@ -62,6 +62,9 @@ public class TestAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     public void removeItem() {
+        if (mDatas.size() <= 0) {
+            return;
+        }
         int pos = random.nextInt(mDatas.size());
         mDatas.remove(pos);
         notifyItemRemoved(pos);

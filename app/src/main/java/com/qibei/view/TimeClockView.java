@@ -5,6 +5,7 @@ import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.os.Handler;
@@ -12,6 +13,7 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -166,7 +168,9 @@ public class TimeClockView extends View {
 
     private void drawText(Canvas canvas) {
         canvas.drawText("已完成", -radius, radius + dip2px(40), textPaint);
+
     }
+
 
     //画底部圆圈
     private void drawBottomCircles(Canvas canvas) {

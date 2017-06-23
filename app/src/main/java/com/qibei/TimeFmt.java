@@ -1,5 +1,6 @@
 package com.qibei;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.qibei.act.BeautifuView;
 import com.qibei.act.TimeClockActivity;
 import com.qibei.view.TimeClockView;
 
@@ -98,6 +100,13 @@ public class TimeFmt extends Fragment {
         soundPoolMap = new HashMap<Integer, Integer>();
         soundPoolMap.put(KEY_SOUND_A1, mSoundPool.load(getContext(), R.raw.a3, 1));
         soundPoolMap.put(KEY_SOUND_A2, mSoundPool.load(getContext(), R.raw.a4, 1));
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, BeautifuView.class));
+            }
+        });
     }
 
     private void upDateTime() {
@@ -117,5 +126,7 @@ public class TimeFmt extends Fragment {
         states = 0;
         mTimeView.stop();
     }
+
+
 
 }
