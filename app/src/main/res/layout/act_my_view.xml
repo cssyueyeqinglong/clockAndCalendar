@@ -12,10 +12,32 @@
         android:layout_marginRight="20dp"
         android:max="100" />
 
-    <com.qibei.view.HalfCircleView
-        android:id="@+id/hcv"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
+
+        <com.qibei.view.HalfCircleView
+            android:id="@+id/hcv"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:visibility="gone" />
+
+        <com.qibei.view.CircleViewTwo
+            android:id="@+id/cv2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:visibility="gone" />
+
+        <com.qibei.view.CircleViewThree
+            android:id="@+id/cv3"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
+    </FrameLayout>
 </LinearLayout>
